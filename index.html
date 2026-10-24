@@ -159,6 +159,17 @@ aside.on .sb>*:nth-child(2){animation-delay:.05s}aside.on .sb>*:nth-child(3){ani
  .nav{max-width:640px}
 }
 @media(max-height:460px) and (orientation:landscape){.cf{height:130px}.nav{--bot:56px}.big{width:80px;height:80px}}
+.fmsg{font-size:13.5px;margin:0}.fmsg.bad{margin:0 0 12px;color:#9C2F2B;background:#FCEDEC;padding:10px 12px;border-radius:12px}.fmsg a{font-weight:700;text-decoration:underline}
+details.faq{background:#fff;border:1px solid var(--line);border-radius:18px;margin-bottom:10px;transition:box-shadow .25s,border-color .25s}
+details.faq:hover{box-shadow:0 8px 20px rgba(36,68,74,.1)}details.faq[open]{border-color:var(--amber);box-shadow:0 10px 24px rgba(217,138,11,.15)}
+details.faq summary{list-style:none;cursor:pointer;padding:16px 52px 16px 16px;font-weight:700;color:var(--deep);position:relative}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq summary::after{content:"+";position:absolute;right:14px;top:50%;margin-top:-14px;width:28px;height:28px;border-radius:50%;background:var(--cream);color:var(--deep);font-size:19px;line-height:28px;text-align:center;transition:all .3s var(--e)}
+details.faq[open] summary::after{content:"\2212";background:var(--amber);color:#fff;transform:rotate(180deg)}
+details.faq .ans{padding:0 16px 16px;color:#3E4E51;animation:fu .35s var(--e)}
+details.faq .ans a{color:var(--teal);font-weight:700;text-decoration:underline}
+#instBtn svg{width:18px;height:18px;display:none}#instBtn[data-mode=install] svg{display:block}
+.ol{margin:12px 0 4px 20px}.ol li{padding:4px 0}
 /* bottom nav (raised active circle) */
 .nav{position:fixed;left:10px;right:10px;bottom:calc(env(safe-area-inset-bottom,0px) + 8px);height:var(--bot);z-index:20;background:var(--cream);border-radius:26px;display:flex;box-shadow:0 -4px 24px rgba(36,68,74,.14);max-width:620px;margin:0 auto}
 .nav a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:8px;gap:2px;font-size:11.5px;font-weight:600;color:var(--mute);position:relative}
@@ -214,6 +225,7 @@ aside.on{transform:none}
 <symbol id="pin" viewBox="0 0 24 24"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
 <symbol id="doc" viewBox="0 0 24 24"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8zM14 3v5h5M9 13h6M9 17h6"/></symbol>
 <symbol id="shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></symbol>
+<symbol id="dl" viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 20h14"/></symbol>
 <symbol id="info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></symbol>
 <symbol id="fb" viewBox="2 2 20 20"><path fill="#1877F2" d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4H15.2c-1.3 0-1.7.8-1.7 1.6V12h2.9l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></symbol>
 <symbol id="tt" viewBox="0 0 24 24"><path fill="#fff" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></symbol>
@@ -232,7 +244,7 @@ aside.on{transform:none}
   <section class="view" id="v-home"></section><section class="view" id="v-about"></section>
   <section class="view" id="v-work"></section><section class="view" id="v-services"></section>
   <section class="view" id="v-reviews"></section><section class="view" id="v-contact"></section>
-  <section class="view pol" id="v-privacy"></section><section class="view pol" id="v-terms"></section>
+  <section class="view" id="v-faqs"></section><section class="view pol" id="v-privacy"></section><section class="view pol" id="v-terms"></section>
 </main>
 
 <nav class="nav" id="nav" aria-label="Main">
@@ -247,10 +259,11 @@ aside.on{transform:none}
 <aside id="side" aria-hidden="true">
   <div class="sh1"><img src="logo.png" alt="Logo"><b>Saad Durrani<small>Developer</small></b><button class="x1" id="closeMenu" aria-label="Close menu"><svg><use href="#close"/></svg></button></div>
   <div class="sb" id="sb"></div>
-  <div class="sf"><a class="btn f" href="#contact" data-svc="">Book now</a><div class="soc" id="sfSoc"></div></div>
+  <div class="sf"><a class="btn f" id="instBtn" href="#contact" data-svc="" data-mode="book"><svg><use href="#dl"/></svg><span id="instTxt">Book now</span></a><div class="soc" id="sfSoc"></div></div>
 </aside>
 
 <div class="modal" id="mSearch"><div class="sheet"><button class="x1" data-close aria-label="Close"><svg><use href="#close"/></svg></button><h2 style="margin-bottom:8px">Search</h2><input class="sin" id="q" type="search" placeholder="Try WordPress, store, landing" autocomplete="off"><div class="res" id="res"></div></div></div>
+<div class="modal" id="mInstall"><div class="sheet"><button class="x1" data-close aria-label="Close"><svg><use href="#close"/></svg></button><h2>Install this app</h2><ol class="ol"><li>Tap the <b>Share</b> button in Safari.</li><li>Choose <b>Add to Home Screen</b>.</li><li>Tap <b>Add</b>.</li></ol></div></div>
 <div class="modal" id="mProfile"><div class="sheet" id="profBody"></div></div>
 <div class="lb" id="lb"><img id="lbImg" alt="Saad Durrani"></div>
 
@@ -321,7 +334,7 @@ $('#v-about').innerHTML=`<h1 class="pt">About <i>me</i></h1><p class="lead">Soft
 <h2 class="sh">Find me online</h2><div class="soc">${socials}</div>`;
 
 $('#v-work').innerHTML=`<h1 class="pt">My <i>projects</i></h1><p class="lead">Sites running for clients right now. New projects will be added here.</p><div class="grid">${WORK.map(wcard).join('')}</div>`;
-$('#v-reviews').innerHTML=`<h1 class="pt">Client <i>reviews</i></h1><p class="lead">Sample reviews shown for layout. Replace them with real client quotes.</p><div class="grid">${REV.map(rcard).join('')}</div>`;
+$('#v-reviews').innerHTML=`<h1 class="pt">Client <i>reviews</i></h1><p class="lead"></p><div class="grid">${REV.map(rcard).join('')}</div>`;
 
 function renderServices(k){
   k=SV[k]?k:'dev';const s=SV[k];
@@ -329,23 +342,83 @@ function renderServices(k){
   <div class="chips">${Object.entries(SV).map(([id,v])=>`<a class="chip ${id===k?'on':''}" href="#services/${id}">${v.n}</a>`).join('')}</div>
   <div class="card" style="margin-top:12px"><div class="rowc"><span class="ic">${ic(s.i)}</span><div><h3>${s.n}</h3><p>${s.d}</p></div></div><ul style="margin:12px 0 0 20px;color:#3E4E51">${s.inc.map(x=>`<li>${x}</li>`).join('')}</ul></div>${tbl(k)}`;
 }
-$('#v-contact').innerHTML=`<h1 class="pt">Get in <i>touch</i></h1><p class="lead">Tell me what you need. I reply within a day.</p>
+$('#v-contact').innerHTML=`<h1 class="pt">Get in <i>touch</i></h1><p class="lead">Tell me what you need. I reply within a day. Common answers are in the <a href="#faqs" style="color:var(--teal);font-weight:700">FAQs</a>.</p>
 <div class="grid"><a class="card lift rowc" href="tel:${PHONE}"><span class="ic">${ic('phone')}</span><div><h3>Phone</h3><p>+92 323 3527130</p></div></a><a class="card lift rowc" href="mailto:${MAIL}"><span class="ic">${ic('mail')}</span><div><h3>Email</h3><p style="word-break:break-all">${MAIL}</p></div></a><div class="card lift rowc"><span class="ic">${ic('pin')}</span><div><h3>Location</h3><p>Bahawalpur, Punjab, Pakistan</p></div></div></div>
-<div class="card" style="margin-top:6px"><form id="cf" novalidate><div id="ff"><div class="fld" id="f1"><label for="n">Full name</label><input id="n" autocomplete="name" placeholder="Your name"><small>Enter your name.</small></div><div class="fld" id="f2"><label for="e">Email</label><input id="e" type="email" autocomplete="email" placeholder="you@example.com"><small>Enter a valid email.</small></div><div class="fld" id="f4"><label for="p">Phone number</label><input id="p" type="tel" inputmode="tel" autocomplete="tel" placeholder="+92 300 0000000"><small>Enter a valid phone number with country code.</small></div><div class="fld" id="f5"><label for="c">Country</label><select id="c" autocomplete="country-name"><option value="">Select country</option>${COUNTRIES.map(c=>`<option>${c}</option>`).join('')}</select><small>Select your country.</small></div><div class="fld" id="f6"><label for="s">Service</label><select id="s"><option value="">Select service</option>${Object.values(SV).flatMap(v=>v.pl.map(p=>`<option>${v.n} - ${p[0]} (${p[1]})</option>`)).join('')}<option>Not sure yet</option></select><small>Select a service.</small></div><div class="fld"><label for="m">Message <span style="font-weight:400;color:var(--mute)">(optional)</span></label><textarea id="m" placeholder="Tell me about your project"></textarea></div><button class="btn f" style="width:100%" id="sb2">Send message</button></div><div class="ok" id="ok"><h2>Message sent</h2><p class="lead">Thanks. I will reply within a day.</p></div></form></div>
+<div class="card" style="margin-top:6px"><form id="cform" novalidate><div id="ff"><div class="fld" id="f1"><label for="n">Full name</label><input id="n" autocomplete="name" placeholder="Your name"><small>Enter your name.</small></div><div class="fld" id="f2"><label for="e">Email</label><input id="e" type="email" autocomplete="email" placeholder="you@example.com"><small>Enter a valid email.</small></div><div class="fld" id="f4"><label for="p">Phone number</label><input id="p" type="tel" inputmode="tel" autocomplete="tel" placeholder="+92 300 0000000"><small>Enter a valid phone number with country code.</small></div><div class="fld" id="f5"><label for="c">Country</label><select id="c" autocomplete="country-name"><option value="">Select country</option>${COUNTRIES.map(c=>`<option>${c}</option>`).join('')}</select><small>Select your country.</small></div><div class="fld" id="f6"><label for="s">Service</label><select id="s"><option value="">Select service</option>${Object.values(SV).flatMap(v=>v.pl.map(p=>`<option>${v.n} - ${p[0]} (${p[1]})</option>`)).join('')}<option>Not sure yet</option></select><small>Select a service.</small></div><div class="fld"><label for="m">Message <span style="font-weight:400;color:var(--mute)">(optional)</span></label><textarea id="m" placeholder="Tell me about your project"></textarea></div><p class="fmsg" id="fm" role="alert"></p><button type="submit" class="btn f" style="width:100%" id="sb2">Send message</button></div><div class="ok" id="ok"><h2>Message sent</h2><p class="lead">Thanks. I will reply within a day.</p></div></form></div>
 <h2 class="sh">Or message me directly</h2>${cbtn}<h2 class="sh">Follow me</h2><div class="soc">${socials}</div>`;
+const L=(h,t)=>`<a href="${h}">${t}</a>`,X=(h,t)=>`<a href="${h}" target="_blank" rel="noopener">${t}</a>`;
+const FC=[['all','All'],['basic','Basics'],['dev','Web Development'],['design','Web Design'],['care','Maintenance'],['shop','E-commerce'],['proc','Process and payment'],['sup','Support']];
+const FAQ=[
+['basic','Who are you and what do you do?',`I am Saad Durrani, a developer and WordPress specialist in Bahawalpur, Pakistan. I build business sites, landing pages, online stores and custom web apps. Read more on the ${L('#about','About page')}.`],
+['basic','Do you work with clients outside Pakistan?',`Yes. I work with clients anywhere by WhatsApp, email and calls. The ${L('#contact','contact form')} asks for your country so I know where you are.`],
+['basic','Which languages and tools do you use?',`HTML, CSS and JavaScript for custom sites, WordPress with Elementor, Divi and Avada, and Python for custom web apps. My skill levels are on the ${L('#about','About page')}.`],
+['basic','How much experience do you have?',`I have more than a year of professional experience as a developer at Yoan Systems, plus several live client projects.`],
+['basic','Can I see your previous work?',`Yes. The ${L('#work','Projects page')} lists live client sites. Tap any project to open the real website.`],
+['basic','Where can I find your professional profile?',`My ${X('https://pk.linkedin.com/in/saad-durrani-developer','LinkedIn profile')} has my background. You can also follow me on ${X('https://www.facebook.com/saad.durani.developer','Facebook')}, ${X('https://www.instagram.com/saad.durrani.developer','Instagram')}, ${X('https://x.com/Saad_Developer_','X')} and ${X('https://www.tiktok.com/@saaddurranideveloper','TikTok')}.`],
+['basic','What is the fastest way to reach you?',`${X('https://wa.me/'+WA,'WhatsApp')} is fastest. You can also call ${X('tel:'+PHONE,'+92 323 3527130')}, email ${X('mailto:'+MAIL,MAIL)} or use the ${L('#contact','contact form')}.`],
+['dev','What kinds of websites do you build?',`Business websites, landing pages, WordPress sites, blogs, online stores and custom web apps. See all plans on the ${L('#services/dev','Web Development page')}.`],
+['dev','Should I choose custom code or WordPress?',`Choose WordPress if you want to edit pages yourself. Choose custom code if you want maximum speed or special features. Tell me about your project and I will recommend one.`],
+['dev','How much is a landing page and what does it include?',`Landing pages start at $60. You get one custom-coded page, a responsive layout, a contact form, basic SEO and a 3-day turnaround. ${L('#services/dev','See the plan')}.`],
+['dev','What does the Business Website plan include?',`It starts at $150 and covers up to 5 pages, a fully responsive layout, a contact form, Google Maps, SEO setup and a 7-day turnaround.`],
+['dev','Can you build a custom web application?',`Yes. Custom apps start at $400 and are scoped after a call, using JavaScript and Python. ${L('#contact','Send me your idea')} and I will reply with next steps.`],
+['dev','Will my website be SEO friendly?',`Yes. Every plan has a clean structure and fast loading. Business and larger plans include full SEO setup. I cannot promise a ranking position, because search engines decide that.`],
+['dev','Can you fix or redesign my existing website?',`Yes, including sites that break on mobile or tablet. ${L('#contact','Send me the link')} and a short description of what is wrong.`],
+['dev','Can you add forms, maps or other features?',`Contact forms and Google Maps are included in the plans. Other integrations are quoted after I understand what you need.`],
+['design','What does your Web Design service cover?',`Page layouts, banners, graphics and brand styling. Plans are Starter at $50, Standard at $120 and Premium at $250. ${L('#services/design','See Web Design')}.`],
+['design','Can you design with my logo and brand colors?',`Yes. Standard and Premium plans include brand styling, so the design matches your logo and colors.`],
+['design','Do you design for mobile first?',`Yes. Layouts are planned for phones first, then scaled up to tablet and desktop.`],
+['design','Can I book design without the build?',`Yes, design can be booked on its own. Say so in your message if you want it, or if you want me to build it afterwards.`],
+['design','How many design revisions do I get?',`Starter includes 1 revision, Standard 2 and Premium 3. Extra changes are quoted before I start them.`],
+['design','Will you make banners and graphics?',`Yes. Starter has 1 banner, Standard 3 and Premium has custom graphics.`],
+['care','What does website maintenance include?',`Updates, backups, security checks, speed tuning and small content edits, depending on your plan. ${L('#services/care','See Web Maintenance')}.`],
+['care','How much does maintenance cost?',`Basic is $30 per month, Standard $60 and Pro $100.`],
+['care','How often are updates and backups done?',`Basic runs monthly. Standard and Pro run weekly.`],
+['care','Can you maintain a site you did not build?',`Usually yes, after a quick look at the site. ${L('#contact','Send me the link')} and I will tell you what is needed.`],
+['care','How many content edits are included?',`Standard includes 2 edits per month and Pro includes 5. The Basic plan does not include content edits.`],
+['care','What support do I get?',`Basic has email support. Standard adds WhatsApp. Pro gets priority support.`],
+['shop','What is included in your e-commerce service?',`Store setup on WordPress, payment and shipping setup, product import and a checkout tested on mobile. ${L('#services/shop','See E-commerce')}.`],
+['shop','How much does an online store cost?',`Starter is $250, Business $400 and Advanced $700.`],
+['shop','How many products can my store have?',`Starter supports up to 20 products, Business up to 100 and Advanced is unlimited.`],
+['shop','Which payment methods can you set up?',`I set up the payment gateways available in your country. Tell me which ones you want and I confirm them before we start.`],
+['shop','Do you set up shipping and tax?',`Yes. Business and Advanced plans include shipping and tax setup.`],
+['shop','Can I manage products myself?',`Yes. Business and Advanced plans include owner training, so you can add products and handle orders yourself.`],
+['shop','Will checkout work well on phones?',`Yes. I test the full checkout on mobile before launch.`],
+['proc','How does a project work?',`Four steps: we talk about your goal, I design the layout, I build and test it, then you launch. The steps are shown on the ${L('#home','Home page')}.`],
+['proc','How long will my project take?',`Landing pages take about 3 days, business sites 7 days, design 3 to 10 days and stores 10 to 14 days. Custom projects are scoped after a call. The clock starts once I have your content.`],
+['proc','What do you need from me to start?',`Your text, logo and images if you have them, your preferred colors and a few example sites you like. If something is missing, tell me and we will sort it out.`],
+['proc','How do I get a quote?',`${L('#contact','Fill the contact form')} or message me on ${X('https://wa.me/'+WA,'WhatsApp')}. The scope discussion is free.`],
+['proc','How and when do I pay?',`Prices are shown in US dollars. The payment method and schedule are written in your quote and agreed before work begins.`],
+['proc','Do you give a written agreement?',`Yes. The scope and price are confirmed in writing before I start. My general rules are in the ${L('#terms','Terms and Conditions')}.`],
+['proc','Who owns the website when it is finished?',`You do, after full payment. Details are in the ${L('#terms','Terms and Conditions')}.`],
+['proc','What if I want changes later?',`Each plan includes the revisions it lists. Later changes can be quoted separately, or covered by a ${L('#services/care','maintenance plan')}.`],
+['sup','Do you help after the website goes live?',`Yes. You can get ongoing help with a ${L('#services/care','maintenance plan')}, or ${L('#contact','contact me')} for a one-off fix.`],
+['sup','Do you provide hosting and a domain?',`Hosting and domain are paid to their provider. I can help you choose them and set everything up.`],
+['sup','How do you handle my information?',`I only use what you send to reply to your enquiry. Read the full ${L('#privacy','Privacy Policy')}.`],
+['sup','Can I edit the website myself later?',`WordPress builds with Elementor, Divi or Avada are easy to edit, and I show you how to change text, images and pages.`],
+['sup','What if I am not happy with the result?',`Tell me what to change. Revisions in your plan are there for this, and I keep working until the result matches what we agreed.`],
+['sup','How quickly do you reply?',`Within a day. For urgent questions, ${X('https://wa.me/'+WA,'WhatsApp')} is quicker.`],
+['sup','How do I install this app on my phone?',`Open the menu and tap Install app. On iPhone, tap Share in Safari and choose Add to Home Screen.`]];
+$('#v-faqs').innerHTML=`<h1 class="pt">Common <i>questions</i></h1><p class="lead">${FAQ.length} answers about my work, services and process. Still unsure? ${L('#contact','Ask me directly')}.</p><div class="chips" id="fchips">${FC.map((c,i)=>`<button class="chip ${i?'':'on'}" data-f="${c[0]}">${c[1]}</button>`).join('')}</div><div id="flist" style="margin-top:14px">${FAQ.map(f=>`<details class="faq" data-c="${f[0]}"><summary>${f[1]}</summary><div class="ans">${f[2]}</div></details>`).join('')}</div><div class="card" style="background:var(--deep);text-align:center;margin-top:20px"><h2 style="color:#fff">Ready to start?</h2><p style="color:#D5E4E6;margin:6px 0 14px">Tell me about your project and get a reply within a day.</p><a class="btn f" href="#contact" data-svc="">Book now</a></div>`;
+$('#fchips').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;$$('#fchips .chip').forEach(c=>c.classList.toggle('on',c===b));$$('#flist .faq').forEach(d=>{d.style.display=(b.dataset.f==='all'||d.dataset.c===b.dataset.f)?'':'none';d.open=false})};
 $('#v-privacy').innerHTML=`<h1 class="pt">Privacy <i>policy</i></h1><p class="lead">Last updated: October 2026</p><h2>What I collect</h2><p>When you use the contact form, I receive your name, email, chosen service and message. This app does not use accounts or tracking.</p><h2>How I use it</h2><ul><li>To reply to your enquiry and discuss your project</li><li>To send a quote or follow up on work you asked for</li></ul><h2>Sharing</h2><p>I do not sell your data. Form messages are delivered through the Web3Forms service to my email inbox.</p><h2>Third-party links</h2><p>Project and social links open other websites with their own privacy policies.</p><h2>Your choices</h2><p>Email ${MAIL} to ask me to delete your messages.</p>`;
 $('#v-terms').innerHTML=`<h1 class="pt">Terms <i>and conditions</i></h1><p class="lead">Last updated: October 2026</p><h2>Quotes and payment</h2><p>Prices shown are starting prices. A final quote is agreed in writing before work begins, and payment terms are set in that quote.</p><h2>Revisions</h2><p>Each package includes the revisions listed in it. Extra changes may be charged.</p><h2>Content and ownership</h2><p>You confirm you own or may use the content you provide. After full payment, the finished website belongs to you.</p><h2>Delivery</h2><p>Delivery times start once I have your content and requirements. Delays in content may move the date.</p><h2>Liability</h2><p>I take care to test every site, but I am not liable for losses from third-party services, hosting or plugins.</p><h2>Contact</h2><p>Questions about these terms: ${MAIL}</p>`;
 
 /* sidebar */
 const sbl=(h,i,t)=>`<a href="${h}" data-nav>${ic(i)}${t}</a>`;
-$('#sb').innerHTML=sbl('#home','home','Home')+sbl('#about','user','About')+sbl('#work','work','Projects')+`<button class="dd" id="dd" aria-expanded="false">${ic('tag')}Services<span class="ch">${ic('chev')}</span></button><div class="sub" id="sub">${Object.entries(SV).map(([k,v])=>`<a href="#services/${k}" data-nav>${v.n}</a>`).join('')}</div>`+sbl('#reviews','star','Reviews')+sbl('#contact','mail','Contact')+sbl('#privacy','shield','Privacy Policy')+sbl('#terms','doc','Terms and Conditions');
+$('#sb').innerHTML=sbl('#home','home','Home')+sbl('#about','user','About')+sbl('#work','work','Projects')+`<button class="dd" id="dd" aria-expanded="false">${ic('tag')}Services<span class="ch">${ic('chev')}</span></button><div class="sub" id="sub">${Object.entries(SV).map(([k,v])=>`<a href="#services/${k}" data-nav>${v.n}</a>`).join('')}</div>`+sbl('#reviews','star','Reviews')+sbl('#faqs','info','FAQs')+sbl('#contact','mail','Contact')+sbl('#privacy','shield','Privacy Policy')+sbl('#terms','doc','Terms and Conditions');
 $('#sfSoc').innerHTML=socials;
 $('#dd').onclick=e=>{const o=$('#sub').classList.toggle('on');e.currentTarget.classList.toggle('on',o);e.currentTarget.setAttribute('aria-expanded',o)};
 const side=$('#side'),scrim=$('#scrim');
 function menu(o){side.classList.toggle('on',o);scrim.classList.toggle('on',o);side.setAttribute('aria-hidden',!o);$('#openMenu').setAttribute('aria-expanded',o)}
 $('#openMenu').onclick=()=>menu(true);$('#closeMenu').onclick=()=>menu(false);scrim.onclick=()=>menu(false);
 $('#sb').addEventListener('click',e=>{if(e.target.closest('[data-nav]'))menu(false)});
-$('.sf .btn').onclick=()=>menu(false);
+/* install app button (falls back to Book now when install is not possible) */
+let dp=null;const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone||document.referrer.startsWith('android-app://'),ios=/iphone|ipad|ipod/i.test(navigator.userAgent)&&!standalone,ib=$('#instBtn');
+function setInstall(on){ib.dataset.mode=on?'install':'book';$('#instTxt').textContent=on?'Install app':'Book now';if(on){ib.removeAttribute('href');ib.removeAttribute('data-svc')}else{ib.setAttribute('href','#contact');ib.setAttribute('data-svc','')}}
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;if(!standalone)setInstall(true)});
+addEventListener('appinstalled',()=>{dp=null;setInstall(false)});
+if(ios)setInstall(true);
+ib.addEventListener('click',async e=>{menu(false);if(ib.dataset.mode!=='install')return;e.preventDefault();if(dp){const q=dp;dp=null;setInstall(false);q.prompt();try{await q.userChoice}catch(_){}}else if(ios)$('#mInstall').classList.add('on')});
 
 /* profile popup */
 function profile(){$('#profBody').innerHTML=`<button class="x1" data-close aria-label="Close"><svg><use href="#close"/></svg></button><div class="tc"><img class="big zoom" src="${PIC}" alt="Saad Durrani, tap to enlarge"><h2>Saad Durrani</h2><p style="color:var(--mute)">Software Engineer and Developer</p><p style="color:var(--mute)">${ic('pin').replace('<svg','<svg style="width:15px;height:15px;vertical-align:-3px"')} Bahawalpur, Punjab, Pakistan</p><div class="tags"><span>Open for new projects</span><span>WordPress</span><span>Elementor</span><span>Divi</span><span>Avada</span><span>Python</span></div></div><p style="margin:6px 0">1+ year at Yoan Systems building client sites. I build custom and WordPress websites that work on every device.</p>${cbtn}<div class="soc" style="justify-content:center;margin:16px 0">${socials}</div><div class="btns" style="justify-content:center"><a class="btn f" href="#contact" data-svc="">Book now</a><a class="btn" href="#about">Full profile</a></div>`}
@@ -360,7 +433,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll()});
 $$('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m||e.target.closest('[data-close]'))m.classList.remove('on')}));
 
 /* search popup */
-const IDX=[...WORK.map(w=>({g:'Projects',t:w[0],s:w[1],h:w[2],x:1,k:w.join(' ')})),...Object.entries(SV).map(([k,v])=>({g:'Services',t:v.n,s:v.d,h:'#services/'+k,k:v.n+v.d+v.inc.join(' ')})),...REV.map(r=>({g:'Reviews',t:r[0],s:r[2],h:'#reviews',k:r.join(' ')})),...SK.map(s=>({g:'Skills',t:s[0],s:s[1]+'%',h:'#about',k:s[0]})),...[['Home','#home'],['About','#about'],['Contact','#contact'],['Privacy Policy','#privacy'],['Terms and Conditions','#terms']].map(p=>({g:'Pages',t:p[0],s:'',h:p[1],k:p[0]}))];
+const IDX=[...WORK.map(w=>({g:'Projects',t:w[0],s:w[1],h:w[2],x:1,k:w.join(' ')})),...Object.entries(SV).map(([k,v])=>({g:'Services',t:v.n,s:v.d,h:'#services/'+k,k:v.n+v.d+v.inc.join(' ')})),...REV.map(r=>({g:'Reviews',t:r[0],s:r[2],h:'#reviews',k:r.join(' ')})),...SK.map(s=>({g:'Skills',t:s[0],s:s[1]+'%',h:'#about',k:s[0]})),...FAQ.map(f=>({g:'FAQs',t:f[1],s:f[2].replace(/<[^>]+>/g,''),h:'#faqs',k:f.join(' ').replace(/<[^>]+>/g,'')})),...[['Home','#home'],['About','#about'],['FAQs','#faqs'],['Contact','#contact'],['Privacy Policy','#privacy'],['Terms and Conditions','#terms']].map(p=>({g:'Pages',t:p[0],s:'',h:p[1],k:p[0]}))];
 $('#openSearch').onclick=()=>{$('#mSearch').classList.add('on');setTimeout(()=>$('#q').focus(),50)};
 $('#q').oninput=e=>{const q=e.target.value.trim().toLowerCase();if(!q){$('#res').innerHTML='';return}
  const r=IDX.filter(i=>i.k.toLowerCase().includes(q)),gs=[...new Set(r.map(i=>i.g))];
@@ -371,25 +444,29 @@ $('#res').onclick=e=>{if(e.target.closest('[data-sr]'))closeAll()};
 let pick='';
 document.addEventListener('click',e=>{const a=e.target.closest('[data-svc]');if(a){pick=a.dataset.svc;closeAll()}});
 /* contact form */
-$('#cf').onsubmit=async e=>{e.preventDefault();const g=i=>$(i).value.trim(),n=g('#n'),em=g('#e'),ph=g('#p'),co=g('#c'),sv=g('#s'),m=g('#m');
+$('#cform').addEventListener('submit',async e=>{e.preventDefault();const g=i=>$(i).value.trim(),n=g('#n'),em=g('#e'),ph=g('#p'),co=g('#c'),sv=g('#s'),m=g('#m'),fm=$('#fm');
  const okE=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em),okP=/^\+?[\d\s\-()]{7,20}$/.test(ph)&&ph.replace(/\D/g,'').length>=7;
  [['#f1',!n],['#f2',!okE],['#f4',!okP],['#f5',!co],['#f6',!sv]].forEach(([f,bad])=>$(f).classList.toggle('err',bad));
+ fm.className='fmsg';fm.textContent='';
  if(!n||!okE||!okP||!co||!sv){const f=$('.fld.err');if(f)f.scrollIntoView({block:'center',behavior:'smooth'});return}
- const b=$('#sb2');b.disabled=true;b.textContent='Sending...';
- try{const r=await(await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:KEY,subject:'New project inquiry - '+sv,name:n,email:em,phone:ph,country:co,service:sv,message:m||'(no message)'})})).json();
-  if(!r.success)throw 0;$('#ff').style.display='none';$('#ok').classList.add('on');e.target.reset()}
- catch(x){alert('Sending failed. Please email '+MAIL+' directly.')}
- b.disabled=false;b.textContent='Send message'};
+ const b=$('#sb2'),ctrl=new AbortController(),to=setTimeout(()=>ctrl.abort(),20000);b.disabled=true;b.textContent='Sending...';
+ try{const res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},signal:ctrl.signal,body:JSON.stringify({access_key:KEY,subject:'New project inquiry - '+sv,from_name:'Portfolio App',name:n,email:em,phone:ph,country:co,service:sv,message:m||'(no message)'})});
+  let r={};try{r=await res.json()}catch(_){}
+  if(!res.ok||!r.success)throw new Error(r.message||('server error '+res.status));
+  $('#ff').style.display='none';$('#ok').classList.add('on');e.target.reset()}
+ catch(x){const t=encodeURIComponent(`Name: ${n}\nEmail: ${em}\nPhone: ${ph}\nCountry: ${co}\nService: ${sv}\nMessage: ${m}`);
+  fm.className='fmsg bad';fm.innerHTML=`Could not send the form (${String(x.message).replace(/</g,'&lt;')}). Send the same details directly: <a href="https://wa.me/${WA}?text=${t}" target="_blank" rel="noopener">WhatsApp</a> or <a href="mailto:${MAIL}?subject=Project%20inquiry&body=${t}">Email</a>.`}
+ finally{clearTimeout(to);b.disabled=false;b.textContent='Send message'}});
 
 document.addEventListener('error',e=>{if(e.target.matches&&e.target.matches('img.avatar,img.big')){e.target.onerror=null;e.target.src='logo.png'}},true);
 
 /* scroll reveal + counters + skill bars */
 const io=new IntersectionObserver(es=>es.forEach(en=>{if(!en.isIntersecting)return;const el=en.target;io.unobserve(el);const d=el._d||0;el.style.transitionDelay=d+'ms';el.classList.add('vis');setTimeout(()=>{el.classList.remove('rv','vis');el.style.transitionDelay=''},950+d)}),{root:$('#main'),threshold:.08,rootMargin:'0px 0px -4% 0px'});
-function reveal(v){let i=0;v.querySelectorAll('.pt,.lead,.hero,.stat,.card,.plan,.chips,h2.sh,.soc').forEach(el=>{el.classList.remove('vis');el.classList.add('rv');el._d=Math.min(i++,7)*70;io.observe(el)});
+function reveal(v){let i=0;v.querySelectorAll('.pt,.lead,.hero,.stat,.card,.plan,.chips,h2.sh,.soc,.faq').forEach(el=>{el.classList.remove('vis');el.classList.add('rv');el._d=Math.min(i++,7)*70;io.observe(el)});
  v.querySelectorAll('.stat b').forEach(b=>{const t=parseInt(b.textContent),suf=b.textContent.replace(/\d+/,'');if(!b.dataset.t){b.dataset.t=t;b.dataset.s=suf}const T=+b.dataset.t,S=b.dataset.s,t0=performance.now();(function f(n){const k=Math.min(1,(n-t0)/1000);b.textContent=Math.round(T*(1-Math.pow(1-k,3)))+S;if(k<1)requestAnimationFrame(f)})(t0)});
  v.querySelectorAll('.bar i').forEach((b,k)=>{b.style.width='0';setTimeout(()=>b.style.width=b.dataset.w,250+k*90)})}
 /* router */
-const PAGES=['home','about','work','services','reviews','contact','privacy','terms'];
+const PAGES=['home','about','work','services','reviews','faqs','contact','privacy','terms'];
 function route(){const [p0,sub]=(location.hash||'#home').slice(1).split('/'),p=PAGES.includes(p0)?p0:'home';
  if(p==='services')renderServices(sub);
  if(p==='contact'){if(pick)$('#s').value=[...$('#s').options].map(o=>o.value).find(v=>v.startsWith(pick))||$('#s').value;$('#ff').style.display='';$('#ok').classList.remove('on')}

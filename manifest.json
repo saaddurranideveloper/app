@@ -1,0 +1,16 @@
+{
+  "name": "Saad Durrani - Developer",
+  "short_name": "Saad Durrani",
+  "description": "Portfolio app of Saad Durrani: WordPress specialist and developer.",
+  "start_url": "/app/",
+  "scope": "/app/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F6E3BF",
+  "theme_color": "#355353",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}

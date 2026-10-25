@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Saad Durrani - Developer</title>
 <meta name="description" content="Saad Durrani: developer and WordPress specialist. Web development, web design, maintenance and e-commerce.">
-<meta name="theme-color" content="#F6E3BF">
-<script>try{var t=localStorage.getItem("theme");if(t==="dark"||(t==="auto"&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.dataset.theme="dark"}catch(e){}</script>
+<meta name="theme-color" content="#12191A">
+<script>try{var t=localStorage.getItem("theme")||"dark";if(t==="dark"||(t==="auto"&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.dataset.theme="dark"}catch(e){document.documentElement.dataset.theme="dark"}</script>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <style>
-:root{--hd:#24444A;--tl:#3D6B72;--card:#fff;--inp:#FFF7E6;--tx2:#3E4E51;--teal:#3D6B72;--deep:#24444A;--amber:#D98A0B;--soft:#F6E3BF;--sheet:#FFFCF6;--cream:#FBEFD6;--ink:#1D2B2E;--mute:#5F6F72;--line:#EADFC8;--bot:70px;--e:cubic-bezier(.22,.9,.32,1)}
+:root{--hd:#24444A;--tl:#3D6B72;--card:#fff;--inp:#FFF7E6;--tx2:#3E4E51;--teal:#3D6B72;--deep:#24444A;--amber:#D98A0B;--soft:#F6E3BF;--sheet:#FFFCF6;--cream:#FBEFD6;--ink:#1D2B2E;--mute:#5F6F72;--line:#EADFC8;--bot:70px;--fs:1;--e:cubic-bezier(.22,.9,.32,1)}
 html{color-scheme:light}
 html[data-theme=dark]{color-scheme:dark;--soft:#12191A;--sheet:#182224;--card:#1F2B2D;--cream:#27373B;--line:#34474C;--ink:#E8F0F1;--mute:#9FB2B5;--hd:#E8F1F2;--tl:#8CC3CB;--inp:#27373B;--tx2:#C3D2D4;--deep:#2A4E55}
 html[data-theme=dark] .fmsg.bad{background:#3A2323;color:#F2A9A5}
@@ -20,7 +20,7 @@ html.tt *{transition:background-color .35s,color .35s,border-color .35s!importan
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
-body{font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--soft);color:var(--ink);overflow:hidden}
+body{font:calc(15px * var(--fs))/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--soft);color:var(--ink);overflow:hidden}
 a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 :focus-visible{outline:2px solid var(--amber);outline-offset:2px}
@@ -48,7 +48,7 @@ h2.sh a{font-size:13px;color:var(--tl);font-weight:600}
 .lift:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(36,68,74,.14)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 22px;border-radius:24px;font-weight:700;font-size:14px;border:2px solid var(--tl);color:var(--tl);transition:all .2s var(--e);cursor:pointer}
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(36,68,74,.2)}
-.btn.f{background:var(--amber);border-color:var(--amber);color:#fff}.btn.f:hover{background:#C27806;border-color:#C27806}
+.btn.f{background:var(--amber);border-color:var(--amber);color:#fff}.btn.f:hover{filter:brightness(.92)}
 .btn.d{background:var(--deep);border-color:var(--hd);color:#fff}
 .btn.wa{background:#1FA855;border-color:#1FA855;color:#fff}
 .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
@@ -106,6 +106,15 @@ td.hot{background:#F3F8F8}tr:last-child td{border-bottom:0}
 .ok{display:none;text-align:center;padding:24px 8px}.ok.on{display:block}
 
 .fld.err select{border-color:#C25450}
+/* star rating input */
+.rate{display:flex;gap:4px}
+.rate button{font-size:36px;line-height:1;color:var(--line);padding:2px 3px;transition:transform .2s var(--e),color .2s}
+.rate button.on{color:var(--amber)}
+.rate button:hover{transform:scale(1.18)}
+.rl{font-size:13px;color:var(--mute);min-height:18px}.rl b{color:var(--amber)}
+.fld.err .rate button{color:#C25450}
+.cnt{font-size:12px;color:var(--mute);text-align:right}
+.rd{font-size:12px;color:var(--mute)}
 .plans{display:grid;gap:22px;margin:22px 0 12px}
 @media(min-width:700px){.plans{grid-template-columns:repeat(3,1fr);gap:14px}}
 .plan{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:26px 18px 18px;position:relative;display:flex;flex-direction:column;transition:transform .25s var(--e),box-shadow .25s}
@@ -187,12 +196,16 @@ details.faq .ans a{color:var(--tl);font-weight:700;text-decoration:underline}
 .seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
 .seg button{padding:14px 6px;border-radius:16px;border:2px solid var(--line);background:var(--card);font-weight:700;font-size:13px;color:var(--hd);display:flex;flex-direction:column;align-items:center;gap:6px;transition:all .25s var(--e)}
 .seg button svg{color:var(--tl)}.seg button:hover{transform:translateY(-3px)}.seg button.on{border-color:var(--amber);background:var(--cream)}.seg small{font-weight:500;color:var(--mute);font-size:11px;margin-top:-4px}
+.seg .aa{font-size:22px;line-height:1;color:var(--tl)}
+.sw{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px}
+.sw button{width:42px;height:42px;border-radius:50%;border:3px solid var(--card);box-shadow:0 0 0 2px var(--line);transition:transform .2s var(--e),box-shadow .2s}
+.sw button:hover{transform:scale(1.1)}.sw button.on{box-shadow:0 0 0 3px var(--ink)}
 .set-row{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px 0;border-top:1px solid var(--line);cursor:pointer;margin-top:4px}
 .set-row b{display:block;color:var(--hd)}.set-row small{color:var(--mute);font-size:13px}
 .set-row input{position:absolute;opacity:0;pointer-events:none}.set-row i{width:48px;height:28px;border-radius:14px;background:var(--line);position:relative;flex-shrink:0;transition:background .25s}
 .set-row i::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.3);transition:transform .25s var(--e)}
 .set-row input:checked+i{background:var(--amber)}.set-row input:checked+i::after{transform:translateX(20px)}.set-row input:focus-visible+i{outline:2px solid var(--amber);outline-offset:2px}
-html.nohover .lift:hover,html.nohover .plan:hover,html.nohover .btn:hover,html.nohover .chip:hover,html.nohover .avatar:hover,html.nohover .tog:hover,html.nohover .so:hover,html.nohover .nav a:not(.on):hover .ni,html.nohover .x1:hover,html.nohover .big:hover,html.nohover .proj:hover img,html.nohover .lift:hover .ic,html.nohover details.faq:hover,html.nohover .cfa:hover,html.nohover .search:hover,html.nohover .seg button:hover{transform:none!important;box-shadow:none!important}
+html.nohover .lift:hover,html.nohover .plan:hover,html.nohover .btn:hover,html.nohover .chip:hover,html.nohover .avatar:hover,html.nohover .tog:hover,html.nohover .so:hover,html.nohover .nav a:not(.on):hover .ni,html.nohover .x1:hover,html.nohover .big:hover,html.nohover .proj:hover img,html.nohover .lift:hover .ic,html.nohover details.faq:hover,html.nohover .cfa:hover,html.nohover .search:hover,html.nohover .seg button:hover,html.nohover .rate button:hover,html.nohover .sw button:hover{transform:none!important;box-shadow:none!important}
 html.nohover .sb a:hover,html.nohover .sb button.dd:hover{padding-left:12px}
 html.nomotion *,html.nomotion *::before,html.nomotion *::after{animation:none!important;transition-duration:.01ms!important;transition-delay:0s!important}
 .logos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
@@ -314,6 +327,7 @@ aside.on{transform:none}
 <script>
 const PHONE='+923233527130',WA='923233527130',MAIL='saaddurranideveloper@gmail.com',KEY='db56908b-4ff7-4251-81f3-efd7e2ee4335',PIC='https://nexthomedecors.com/wp-content/uploads/2026/10/saad-durrani.jpeg';
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const ls={g:k=>{try{return localStorage.getItem(k)}catch(_){return null}},s:(k,v)=>{try{localStorage.setItem(k,v)}catch(_){}},d:k=>{try{localStorage.removeItem(k)}catch(_){}}};
 const ic=n=>`<svg><use href="#${n}"/></svg>`;
 const shot=u=>'https://s.wordpress.com/mshots/v1/'+encodeURIComponent(u)+'?w=1920&h=1080';
 const ext=u=>`href="${u}" target="_blank" rel="noopener"`;
@@ -322,7 +336,10 @@ const socials=SOC.map(s=>`<a class="so ${s[0]}" ${ext(s[2])} aria-label="${s[1]}
 const WORK=[['World Tech Codex CRM','Free sales CRM, custom built (not WordPress)','https://world-tech-codex.github.io/world-tech-codex/leads','crm.png'],['The Crypto Airdrop','Crypto content site','https://thecryptoairdrop.com/',shot('https://thecryptoairdrop.com/')],['Home Decor Cozy','WordPress blog','https://homedecorcozy.com/',shot('https://homedecorcozy.com/')],['Home Charm Decors','WordPress blog','https://homecharmdecors.com/',shot('https://homecharmdecors.com/faqs/')],['Farzana Aqib','Personal brand site','https://farzanaaqib.com/',shot('https://farzanaaqib.com/')],['SkyLine Design','Portfolio website','https://skylinedesign555.com/',shot('https://skylinedesign555.com/')],['Reliable Finds Store','E-commerce store','https://reliablefinds.store/',shot('https://reliablefinds.store/')]];
 const SK=[['HTML',95],['CSS',92],['JavaScript',85],['WordPress',95],['Elementor',90],['Divi',85],['Avada',80]];
 const CO=[['Yoan Systems','co-yoan.png','Developer','1+ year. Client websites, custom front-end work and WordPress builds with Elementor, Divi and Avada.'],['Dental Professional Portal','co-dental.png','Worked with the team','Web development work for the Dental Professional Portal team.'],['World Tech Codex','co-wtc.png','Built the Sales CRM','Created the free World Tech Codex Sales CRM, a custom-built tool for managing leads.']];
-const REV=[['The Crypto Airdrop','Crypto content site','The site loads quickly and the airdrop listings are easy to scan. Saad understood exactly what we needed.'],['Home Decor Cozy','WordPress blog','Our posts look great on phones and the layout is simple to browse. Saad was patient with every change.'],['Home Charm Decors','WordPress blog','Saad set up a clean blog and showed us how to edit it ourselves.'],['Farzana Aqib','Personal brand site','Clear communication from start to finish, delivered on the timeline he quoted.'],['SkyLine Design','Portfolio website','The portfolio shows our work properly on every screen, and the process was smooth.'],['Reliable Finds Store','E-commerce store','The store is easy to browse and checkout works well on mobile. Issues were fixed quickly.']];
+/* REV item: [project, website type, message, rating, 'YYYY-MM-DDTHH:MM' date and time]. Add each new approved review here. Order does not matter: newest shows first. */
+const REV=[['The Crypto Airdrop','Crypto content site','The site loads quickly and the airdrop listings are easy to scan. Saad understood exactly what we needed.',5,'2025-03-14T11:20'],['Home Decor Cozy','WordPress blog','Our posts look great on phones and the layout is simple to browse. Saad was patient with every change.',5,'2025-06-02T16:45'],['Home Charm Decors','WordPress blog','Saad set up a clean blog and showed us how to edit it ourselves.',5,'2025-09-19T09:30'],['Farzana Aqib','Personal brand site','Clear communication from start to finish, delivered on the timeline he quoted.',5,'2026-01-22T18:10'],['SkyLine Design','Portfolio website','The portfolio shows our work properly on every screen, and the process was smooth.',5,'2026-04-08T13:05'],['Reliable Finds Store','E-commerce store','The store is easy to browse and checkout works well on mobile. Issues were fixed quickly.',5,'2026-08-17T20:40']].sort((x,y)=>new Date(y[4]||0)-new Date(x[4]||0));
+const fdt=s=>{const d=new Date(s);return isNaN(d)?'':d.toLocaleString('en-GB',{day:'numeric',month:'short',year:'numeric',hour:'numeric',minute:'2-digit',hour12:true})};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const COUNTRIES='Afghanistan|Albania|Algeria|Argentina|Armenia|Australia|Austria|Azerbaijan|Bahrain|Bangladesh|Belarus|Belgium|Bolivia|Bosnia and Herzegovina|Brazil|Bulgaria|Cambodia|Cameroon|Canada|Chile|China|Colombia|Costa Rica|Croatia|Cyprus|Czech Republic|Denmark|Dominican Republic|Ecuador|Egypt|Estonia|Ethiopia|Finland|France|Georgia|Germany|Ghana|Greece|Guatemala|Hong Kong|Hungary|Iceland|India|Indonesia|Iran|Iraq|Ireland|Israel|Italy|Japan|Jordan|Kazakhstan|Kenya|Kuwait|Kyrgyzstan|Latvia|Lebanon|Libya|Lithuania|Luxembourg|Malaysia|Maldives|Malta|Mexico|Morocco|Nepal|Netherlands|New Zealand|Nigeria|Norway|Oman|Pakistan|Palestine|Panama|Peru|Philippines|Poland|Portugal|Qatar|Romania|Russia|Saudi Arabia|Serbia|Singapore|Slovakia|Slovenia|South Africa|South Korea|Spain|Sri Lanka|Sudan|Sweden|Switzerland|Syria|Taiwan|Tajikistan|Tanzania|Thailand|Tunisia|Turkey|Turkmenistan|Uganda|Ukraine|United Arab Emirates|United Kingdom|United States|Uruguay|Uzbekistan|Venezuela|Vietnam|Yemen|Zimbabwe|Other'.split('|');
 const Y='<span class="yes">&#10003;</span>',N='<span class="no">&ndash;</span>';
 /* EDIT PRICES HERE */
@@ -342,7 +359,8 @@ const SV={
 /* (hero art replaced by slider) */const heroArt=`<svg class="art" viewBox="0 0 400 190" aria-hidden="true"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#F2B544"/><stop offset="1" stop-color="#D98A0B"/></linearGradient></defs><circle cx="330" cy="40" r="70" fill="#fff" opacity=".06"/><circle cx="60" cy="170" r="60" fill="#fff" opacity=".05"/><path d="M40 70L12 95l28 25M360 70l28 25-28 25" fill="none" stroke="url(#g)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><rect x="82" y="22" width="236" height="150" rx="14" fill="#FFFCF6"/><path d="M82 36a14 14 0 0 1 14-14h208a14 14 0 0 1 14 14v10H82z" fill="#F6E3BF"/><circle cx="98" cy="34" r="4" fill="#D98A0B"/><circle cx="112" cy="34" r="4" fill="#3D6B72"/><circle cx="126" cy="34" r="4" fill="#24444A"/><rect x="100" y="62" width="110" height="12" rx="6" fill="#24444A"/><rect x="100" y="84" width="150" height="7" rx="3.5" fill="#B9C8CA"/><rect x="100" y="98" width="120" height="7" rx="3.5" fill="#B9C8CA"/><rect x="100" y="118" width="62" height="22" rx="11" fill="url(#g)"/><rect x="230" y="60" width="72" height="96" rx="10" fill="#3D6B72"/><circle cx="266" cy="96" r="20" fill="#F6E3BF"/><path d="M266 80l5 10 11 1-8 8 2 11-10-6-10 6 2-11-8-8 11-1z" fill="#D98A0B"/><rect x="100" y="148" width="100" height="8" rx="4" fill="#EADFC8"/></svg>`;
 function tbl(s){const t=SV[s];return `<div class="plans">${t.pl.map((p,i)=>`<div class="plan ${p[3]?'hot':''}">${p[3]?'<span class="rec">Most recommended</span>':''}<h3>${p[0]}</h3><div class="pp">${p[1]}</div><p class="per">${p[2]}</p><ul>${t.rw.map(r=>{const v=r[1][i];return v===Y?`<li>${r[0]}</li>`:v===N?`<li class="off">${r[0]}</li>`:`<li>${r[0]}: <b>${v}</b></li>`}).join('')}</ul><a class="btn ${p[3]?'f':''}" href="#contact" data-svc="${t.n} - ${p[0]}">Book ${p[0]}</a></div>`).join('')}</div>`}
 const wcard=w=>`<a class="card proj lift" ${ext(w[2])}><div class="im"><img src="${w[3]}" alt="${w[0]} screenshot" loading="lazy"></div><div class="b"><h3>${w[0]}</h3><p>${w[1]}. Tap to open the live site.</p></div></a>`;
-const rcard=r=>`<div class="card lift"><div class="rowc"><span class="av">${r[0][0]}</span><div><h3>${r[0]}</h3><p>${r[1]}</p></div></div><div class="stars" style="margin:10px 0 4px" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>${r[2]}</p></div>`;
+const stz=n=>'&#9733;'.repeat(n)+'<span style="color:var(--line)">'+'&#9733;'.repeat(5-n)+'</span>';
+const rcard=r=>{const n=Math.max(1,Math.min(5,r[3]||5));return `<div class="card lift"><div class="rowc"><span class="av">${r[0][0]}</span><div><h3>${r[0]}</h3><p>${r[1]}</p></div></div><div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin:10px 0 4px"><span class="stars" aria-label="${n} out of 5 stars">${stz(n)}</span>${r[4]?`<time class="rd" datetime="${r[4]}">${fdt(r[4])}</time>`:''}</div><p>${r[2]}</p></div>`};
 const skl=s=>`<div class="sk"><span>${s[0]}<b>${s[1]}%</b></span><div class="bar"><i data-w="${s[1]}%"></i></div></div>`;
 const cbtn=`<div class="btns"><a class="btn wa" ${ext('https://wa.me/'+WA)}>WhatsApp</a><a class="btn d" href="tel:${PHONE}">Call</a><a class="btn" href="mailto:${MAIL}">Email</a></div>`;
 
@@ -366,7 +384,7 @@ $('#v-home').innerHTML=`<div class="hero"><img class="hlogo" src="logo.png" alt=
   s.style.transform=`translateX(${-50+x}%) scale(${a===0?1:a===1?.78:.6})`;s.style.opacity=a>2?0:1;s.style.pointerEvents=a>2?'none':'auto';s.style.zIndex=10-a;s.style.filter=a?'brightness(.7)':'none'});
   $('#cap').innerHTML=`<b>${WORK[cur][0]}</b><br><span>${WORK[cur][1]}</span>`;[...dots.children].forEach((b,i)=>b.classList.toggle('on',i===cur))}
  const go=i=>{cur=(i+n)%n;show()};
- const play=()=>{clearInterval(t);if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&!document.documentElement.classList.contains('nomotion'))t=setInterval(()=>go(cur+1),3600)},stop=()=>clearInterval(t);
+ const play=()=>{clearInterval(t);if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&!document.documentElement.classList.contains('nomotion'))t=setInterval(()=>{if(ls.g('auto')!=='0')go(cur+1)},3600)},stop=()=>clearInterval(t);
  el.onclick=e=>{const s=e.target.closest('.sl');if(!s)return;const i=+s.dataset.i;i===cur?window.open(WORK[i][2],'_blank','noopener'):go(i)};
  $('#cfp').onclick=()=>go(cur-1);$('#cfn').onclick=()=>go(cur+1);dots.onclick=e=>{const b=e.target.closest('button');if(b)go(+b.dataset.i)};
  const cf=$('#cfw');let sx=0;cf.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;stop()},{passive:true});cf.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)go(cur+(dx<0?1:-1));play()});
@@ -380,8 +398,43 @@ $('#v-about').innerHTML=`<h1 class="pt">About <i>me</i></h1><p class="lead">Soft
 <h2 class="sh">Find me online</h2><div class="soc">${socials}</div>`;
 
 $('#v-work').innerHTML=`<h1 class="pt">Our <i> Recent Work</i></h1><p class="lead">Explore our latest projects and see how we help brands grow.</p><div class="card feat"><img class="zoom" src="crm.png" alt="World Tech Codex CRM dashboard screenshot" loading="lazy"><div class="fb"><span class="nw">Newest project</span><h2>World Tech Codex CRM</h2><p style="margin-top:6px;color:var(--tx2)">A free sales CRM I built for World Tech Codex. Track leads through each stage, manage contacts and activities, import lead lists from CSV and send designed emails. No investment needed to use it. It is custom built, not a WordPress site.</p><div class="tags"><span>Free</span><span>Custom built</span><span>Leads</span><span>Contacts</span><span>Email</span><span>CSV import</span></div><div class="btns"><a class="btn f" ${ext(WORK[0][2])}>Open CRM</a><button class="btn" data-zoom data-src="crm.png">View screenshot</button></div></div></div><h2 class="sh">More projects</h2><div class="grid">${WORK.slice(1).map(wcard).join('')}</div>`;
-$('#v-reviews').innerHTML=`<h1 class="pt">What Our <i>Clients Say</i></h1><p class="lead">Discover how we’ve helped our clients achieve their goals and grow their businesses.
-</p><div class="grid">${REV.map(rcard).join('')}</div>`;
+
+/* ---------- reviews page (list + leave a review) ---------- */
+const WTYPES=['Business website','Landing page','Portfolio','Blog','E-commerce store','Web app / CRM','Redesign','Maintenance','Other'];
+const RLAB=['','Poor','Fair','Good','Very good','Excellent'];
+const AVG=(REV.reduce((a,r)=>a+(r[3]||5),0)/REV.length).toFixed(1);
+$('#v-reviews').innerHTML=`<h1 class="pt">What Our <i>Clients Say</i></h1><p class="lead">Discover how we’ve helped our clients achieve their goals and grow their businesses.</p>
+<div class="card tc"><b style="font-size:36px;color:var(--amber)">${AVG}</b><span style="color:var(--mute)"> / 5</span><div class="stars" style="font-size:22px" aria-hidden="true">${stz(Math.round(AVG))}</div><p style="color:var(--mute)">Based on ${REV.length} client reviews</p></div>
+<div class="grid">${REV.map(rcard).join('')}</div>
+<h2 class="sh">Leave a review</h2>
+<div class="card"><form id="rform" novalidate><div id="rff">
+<div class="fld" id="r1"><label for="rp">Project name</label><input id="rp" maxlength="80" placeholder="e.g. My Online Store"><small>Enter the project name.</small></div>
+<div class="fld" id="r2"><label for="rt">Website type</label><select id="rt"><option value="">Select website type</option>${WTYPES.map(t=>`<option>${t}</option>`).join('')}</select><small>Select a website type.</small></div>
+<div class="fld" id="r4"><label id="rlabel">Your rating</label><div class="rate" id="rate" role="radiogroup" aria-labelledby="rlabel">${[1,2,3,4,5].map(n=>`<button type="button" role="radio" aria-checked="false" data-v="${n}" aria-label="${n} star${n>1?'s':''}">&#9733;</button>`).join('')}</div><p class="rl" id="rl">Tap a star to rate</p><small>Please select a star rating.</small></div>
+<div class="fld" id="r3"><label for="rm">Quick message</label><textarea id="rm" maxlength="300" placeholder="Write a short review (max 300 characters)"></textarea><div class="cnt" id="rc">0 / 300</div><small>Write a short message (at least 10 characters).</small></div>
+<p class="fmsg" id="rfm" role="alert"></p><button type="submit" class="btn f" style="width:100%" id="rsb">Submit review</button></div>
+<div class="ok" id="rok"><h2>Thank you!</h2><p class="lead" style="margin-bottom:6px">Your review was sent. It will appear on this page after approval.</p><p class="rd" id="rdt" style="margin-bottom:14px"></p><div id="rpv" style="text-align:left"></div></div></form></div>`;
+let rating=0;
+function paintRate(v){const s=v==null?rating:v;$$('#rate button').forEach(b=>{const on=+b.dataset.v<=s;b.classList.toggle('on',on);b.setAttribute('aria-checked',+b.dataset.v===rating)});$('#rl').innerHTML=s?`<b>${s} / 5</b> &ndash; ${RLAB[s]}`:'Tap a star to rate'}
+paintRate();
+$('#rate').onclick=e=>{const b=e.target.closest('button');if(!b)return;rating=+b.dataset.v;$('#r4').classList.remove('err');paintRate()};
+$('#rate').onmouseover=e=>{const b=e.target.closest('button');if(b)paintRate(+b.dataset.v)};
+$('#rate').onmouseleave=()=>paintRate();
+$('#rate').onkeydown=e=>{if(e.key==='ArrowRight'||e.key==='ArrowUp'){rating=Math.min(5,rating+1);paintRate();e.preventDefault()}if(e.key==='ArrowLeft'||e.key==='ArrowDown'){rating=Math.max(1,rating-1);paintRate();e.preventDefault()}};
+$('#rm').oninput=e=>{$('#rc').textContent=e.target.value.length+' / 300'};
+$('#rform').addEventListener('submit',async e=>{e.preventDefault();
+ const g=i=>$(i).value.trim(),pn=g('#rp'),wt=g('#rt'),msg=g('#rm'),fm=$('#rfm');
+ [['#r1',!pn],['#r2',!wt],['#r4',!rating],['#r3',msg.length<10]].forEach(([f,bad])=>$(f).classList.toggle('err',bad));
+ fm.className='fmsg';fm.textContent='';
+ if(!pn||!wt||!rating||msg.length<10){const f=$('#rform .fld.err');if(f)f.scrollIntoView({block:'center',behavior:'smooth'});return}
+ const now=new Date(),p2=n=>String(n).padStart(2,'0'),iso=`${now.getFullYear()}-${p2(now.getMonth()+1)}-${p2(now.getDate())}T${p2(now.getHours())}:${p2(now.getMinutes())}`;const b=$('#rsb'),ctrl=new AbortController(),to=setTimeout(()=>ctrl.abort(),20000);b.disabled=true;b.textContent='Sending...';
+ try{const res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},signal:ctrl.signal,body:JSON.stringify({access_key:KEY,subject:'New client review ('+rating+'/5) - '+pn,from_name:'Portfolio Reviews',project_name:pn,website_type:wt,rating:rating+' / 5 ('+RLAB[rating]+')',message:msg,submitted_at:fdt(iso),rev_line:`[${JSON.stringify(pn)},${JSON.stringify(wt)},${JSON.stringify(msg)},${rating},"${iso}"],`})});
+  let r={};try{r=await res.json()}catch(_){}
+  if(!res.ok||!r.success)throw new Error(r.message||('server error '+res.status));
+  $('#rdt').textContent='Sent on '+fdt(iso);$('#rpv').innerHTML=rcard([esc(pn),esc(wt),esc(msg),rating,iso])+'<p class="rd" style="text-align:center">Pending approval</p>';$('#rff').style.display='none';$('#rok').classList.add('on');e.target.reset();rating=0;paintRate();$('#rc').textContent='0 / 300'}
+ catch(x){const t=encodeURIComponent(`Review\nProject: ${pn}\nType: ${wt}\nRating: ${rating}/5\nMessage: ${msg}`);
+  fm.className='fmsg bad';fm.innerHTML=`Could not send the review (${String(x.message).replace(/</g,'&lt;')}). Send it directly: <a href="https://wa.me/${WA}?text=${t}" target="_blank" rel="noopener">WhatsApp</a> or <a href="mailto:${MAIL}?subject=Client%20review&body=${t}">Email</a>.`}
+ finally{clearTimeout(to);b.disabled=false;b.textContent='Submit review'}});
 
 function renderServices(k){
   k=SV[k]?k:'dev';const s=SV[k];
@@ -449,8 +502,8 @@ const FAQ=[
 ['sup','How do I install this app on my phone?',`Open the menu and tap Install app. On iPhone, tap Share in Safari and choose Add to Home Screen.`]];
 $('#v-faqs').innerHTML=`<h1 class="pt">Frequently Asked Questions <i>(FAQs)</i></h1><p class="lead"> Can't find what you're looking for? Reach out to  ${L('#contact','our support team')}.</p><div class="chips" id="fchips">${FC.map((c,i)=>`<button class="chip ${i?'':'on'}" data-f="${c[0]}">${c[1]}</button>`).join('')}</div><div id="flist" style="margin-top:14px">${FAQ.map(f=>`<details class="faq" data-c="${f[0]}"><summary>${f[1]}</summary><div class="ans">${f[2]}</div></details>`).join('')}</div><div class="card" style="background:var(--deep);text-align:center;margin-top:20px"><h2 style="color:#fff">Ready to start?</h2><p style="color:#D5E4E6;margin:6px 0 14px">Tell me about your project and get a reply within a day.</p><a class="btn f" href="#contact" data-svc="">Book now</a></div>`;
 $('#fchips').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;$$('#fchips .chip').forEach(c=>c.classList.toggle('on',c===b));$$('#flist .faq').forEach(d=>{d.style.display=(b.dataset.f==='all'||d.dataset.c===b.dataset.f)?'':'none';d.open=false})};
-$('#v-privacy').innerHTML=`<h1 class="pt">Privacy <i>policy</i></h1><p class="lead">Last updated: October 2026</p><h2>What I collect</h2><p>When you use the contact form, I receive your name, email, chosen service and message. This app does not use accounts or tracking.</p><h2>How I use it</h2><ul><li>To reply to your enquiry and discuss your project</li><li>To send a quote or follow up on work you asked for</li></ul><h2>Sharing</h2><p>I do not sell your data. Form messages are delivered through the Web3Forms service to my email inbox.</p><h2>Third-party links</h2><p>Project and social links open other websites with their own privacy policies.</p><h2>Your choices</h2><p>Email ${MAIL} to ask me to delete your messages.</p>`;
-$('#v-terms').innerHTML=`<h1 class="pt">Terms <i>and conditions</i></h1><p class="lead">Last updated: October 2026</p><h2>Quotes and payment</h2><p>Prices shown are starting prices. A final quote is agreed in writing before work begins, and payment terms are set in that quote.</p><h2>Revisions</h2><p>Each package includes the revisions listed in it. Extra changes may be charged.</p><h2>Content and ownership</h2><p>You confirm you own or may use the content you provide. After full payment, the finished website belongs to you.</p><h2>Delivery</h2><p>Delivery times start once I have your content and requirements. Delays in content may move the date.</p><h2>Liability</h2><p>I take care to test every site, but I am not liable for losses from third-party services, hosting or plugins.</p><h2>Contact</h2><p>Questions about these terms: ${MAIL}</p>`;
+$('#v-privacy').innerHTML=`<h1 class="pt">Privacy <i>policy</i></h1><p class="lead">Last updated: October 2026</p><h2>What I collect</h2><p>When you use the contact form, I receive your name, email, chosen service and message. When you leave a review, I receive the project name, website type, rating and message you write. This app does not use accounts or tracking.</p><h2>How I use it</h2><ul><li>To reply to your enquiry and discuss your project</li><li>To send a quote or follow up on work you asked for</li><li>To show approved reviews on the Reviews page</li></ul><h2>Sharing</h2><p>I do not sell your data. Form messages are delivered through the Web3Forms service to my email inbox.</p><h2>Third-party links</h2><p>Project and social links open other websites with their own privacy policies.</p><h2>Your choices</h2><p>Email ${MAIL} to ask me to delete your messages or remove a review.</p>`;
+$('#v-terms').innerHTML=`<h1 class="pt">Terms <i>and conditions</i></h1><p class="lead">Last updated: October 2026</p><h2>Quotes and payment</h2><p>Prices shown are starting prices. A final quote is agreed in writing before work begins, and payment terms are set in that quote.</p><h2>Revisions</h2><p>Each package includes the revisions listed in it. Extra changes may be charged.</p><h2>Content and ownership</h2><p>You confirm you own or may use the content you provide. After full payment, the finished website belongs to you.</p><h2>Delivery</h2><p>Delivery times start once I have your content and requirements. Delays in content may move the date.</p><h2>Reviews</h2><p>Reviews are checked before they are shown. I may decline reviews that are spam, abusive or not about my work.</p><h2>Liability</h2><p>I take care to test every site, but I am not liable for losses from third-party services, hosting or plugins.</p><h2>Contact</h2><p>Questions about these terms: ${MAIL}</p>`;
 
 /* sidebar */
 const sbl=(h,i,t)=>`<a href="${h}" data-nav>${ic(i)}${t}</a>`;
@@ -529,12 +582,16 @@ function reveal(v){let i=0;v.querySelectorAll('.pt,.lead,.hero,.stat,.card,.plan
  v.querySelectorAll('.stat b').forEach(b=>{const t=parseInt(b.textContent),suf=b.textContent.replace(/\d+/,'');if(!b.dataset.t){b.dataset.t=t;b.dataset.s=suf}const T=+b.dataset.t,S=b.dataset.s,t0=performance.now();(function f(n){const k=Math.min(1,(n-t0)/1000);b.textContent=Math.round(T*(1-Math.pow(1-k,3)))+S;if(k<1)requestAnimationFrame(f)})(t0)});
  v.querySelectorAll('.bar i').forEach((b,k)=>{b.style.width='0';setTimeout(()=>b.style.width=b.dataset.w,250+k*90)})}
 /* ---------- settings, theme, notifications, versions ---------- */
-const ls={g:k=>{try{return localStorage.getItem(k)}catch(_){return null}},s:(k,v)=>{try{localStorage.setItem(k,v)}catch(_){}}};
 const root=document.documentElement,mq=matchMedia('(prefers-color-scheme: dark)');
+const ACC=[['#D98A0B','Amber'],['#D6456B','Rose'],['#2F7DE1','Blue'],['#2E9A5A','Green'],['#8A5CD6','Purple']];
+const FS=[['0.9','Small'],['1','Normal'],['1.15','Large']];
+const PREF_KEYS=['theme','hover','motion','fs','ac','auto','haptic'];
 let VERSION='',reg=null,latest=null;
-function applyTheme(anim){const t=ls.g('theme')||'light',d=t==='dark'||(t==='auto'&&mq.matches);if(anim){root.classList.add('tt');setTimeout(()=>root.classList.remove('tt'),450)}root.dataset.theme=d?'dark':'light';document.querySelector('meta[name=theme-color]').content=d?'#12191A':'#F6E3BF'}
-function applyPrefs(){root.classList.toggle('nohover',ls.g('hover')==='0');root.classList.toggle('nomotion',ls.g('motion')==='0')}
+function applyTheme(anim){const t=ls.g('theme')||'dark',d=t==='dark'||(t==='auto'&&mq.matches);if(anim){root.classList.add('tt');setTimeout(()=>root.classList.remove('tt'),450)}root.dataset.theme=d?'dark':'light';document.querySelector('meta[name=theme-color]').content=d?'#12191A':'#F6E3BF'}
+function applyPrefs(){root.classList.toggle('nohover',ls.g('hover')==='0');root.classList.toggle('nomotion',ls.g('motion')==='0');root.style.setProperty('--fs',ls.g('fs')||'1');root.style.setProperty('--amber',ls.g('ac')||'#D98A0B')}
 mq.addEventListener('change',()=>applyTheme(1));applyTheme();applyPrefs();
+/* haptic tap feedback (Android browsers that support vibration) */
+document.addEventListener('click',e=>{if(ls.g('haptic')!=='0'&&navigator.vibrate&&e.target.closest('a,button,summary,label.set-row'))try{navigator.vibrate(8)}catch(_){}});
 async function notify(title,body,tag){if(ls.g('notif')!=='1'||!('Notification' in window)||Notification.permission!=='granted')return;try{if(reg)await reg.showNotification(title,{body,icon:'icon-192.png',badge:'icon-192.png',tag:tag||'app',data:{url:APPURL}});else new Notification(title,{body,icon:'icon-192.png'})}catch(_){}}
 async function setNotif(on){if(!on){ls.s('notif','0');return true}if(!('Notification' in window)){toast('Notifications are not supported on this device');return false}let p=Notification.permission;if(p==='default')p=await Notification.requestPermission();if(p!=='granted'){toast('Notifications are blocked. Allow them in your browser settings.');return false}ls.s('notif','1');notify('Notifications are on','You will hear about new versions and updates.','welcome');return true}
 const vc=(a,b)=>{a=a.split('.').map(Number);b=b.split('.').map(Number);for(let i=0;i<3;i++){if((a[i]||0)!==(b[i]||0))return(a[i]||0)>(b[i]||0)?1:-1}return 0};
@@ -556,21 +613,32 @@ if(standalone&&'Notification' in window&&Notification.permission==='default'&&!l
 $('#nAllow').onclick=async()=>{ls.s('asked','1');$('#nbar').classList.remove('on');await setNotif(true)};$('#nNo').onclick=()=>{ls.s('asked','1');$('#nbar').classList.remove('on')};
 /* settings page */
 const srow=(id,t,sub,on)=>`<label class="set-row"><span><b>${t}</b><small>${sub}</small></span><input type="checkbox" data-pref="${id}" ${on?'checked':''}><i></i></label>`;
-function renderSettings(){const th=ls.g('theme')||'light',nt=ls.g('notif')==='1'&&'Notification' in window&&Notification.permission==='granted';
+function renderSettings(){const th=ls.g('theme')||'dark',nt=ls.g('notif')==='1'&&'Notification' in window&&Notification.permission==='granted',fs=ls.g('fs')||'1',ac=ls.g('ac')||'#D98A0B';
  $('#v-settings').innerHTML=`<h1 class="pt">App <i>settings</i></h1><p class="lead">Make the app work the way you like.</p>
-<div class="card"><h2>Appearance</h2><div class="seg">${[['light','sun','Light','default'],['dark','moon','Dark',''],['auto','auto','System','']].map(t=>`<button data-th="${t[0]}" class="${th===t[0]?'on':''}" aria-pressed="${th===t[0]}">${ic(t[1])}${t[2]}${t[3]?`<small>${t[3]}</small>`:''}</button>`).join('')}</div></div>
+<div class="card"><h2>Appearance</h2><div class="seg">${[['light','sun','Light',''],['dark','moon','Dark','default'],['auto','auto','System','']].map(t=>`<button data-th="${t[0]}" class="${th===t[0]?'on':''}" aria-pressed="${th===t[0]}">${ic(t[1])}${t[2]}${t[3]?`<small>${t[3]}</small>`:''}</button>`).join('')}</div></div>
+<div class="card"><h2>Accent color</h2><div class="sw">${ACC.map(a=>`<button data-ac="${a[0]}" class="${ac===a[0]?'on':''}" style="background:${a[0]}" aria-label="${a[1]}" aria-pressed="${ac===a[0]}"></button>`).join('')}</div></div>
+<div class="card"><h2>Text size</h2><div class="seg">${FS.map((f,i)=>`<button data-fs="${f[0]}" class="${fs===f[0]?'on':''}" aria-pressed="${fs===f[0]}"><span class="aa" style="font-size:${15+i*5}px">Aa</span>${f[1]}</button>`).join('')}</div></div>
 <div class="card"><h2>Notifications</h2>${srow('notif','Allow notifications','Alerts about new versions and updates',nt)}</div>
-<div class="card"><h2>Animations</h2>${srow('hover','Hover animations','Cards and buttons move when you point at them',ls.g('hover')!=='0')}${srow('motion','Page animations','Scroll effects, slider and transitions',ls.g('motion')!=='0')}</div>
+<div class="card"><h2>Animations</h2>${srow('hover','Hover animations','Cards and buttons move when you point at them',ls.g('hover')!=='0')}${srow('motion','Page animations','Scroll effects, slider and transitions',ls.g('motion')!=='0')}${srow('auto','Slider autoplay','Project slider on Home moves by itself',ls.g('auto')!=='0')}${srow('haptic','Tap vibration','Short vibration when you tap (supported phones only)',ls.g('haptic')!=='0')}</div>
+<div class="card"><h2>Storage</h2><p style="color:var(--mute);font-size:13.5px;margin-top:6px">Clear saved offline files if the app looks outdated, or reset every setting to default.</p><div class="btns"><button class="btn" id="clr">Clear offline cache</button><button class="btn" id="rst">Reset settings</button></div></div>
 <div class="card"><h2>About this app</h2><div class="rowc" style="margin-top:10px"><span class="ic">${ic('info')}</span><div><h3>Version ${VERSION||ls.g('cur')||''}</h3><p id="lastChk">${ls.g('chk')?'Last checked '+new Date(+ls.g('chk')).toLocaleString():'Not checked yet'}</p></div></div><div class="btns"><button class="btn f" id="chk">Check for updates</button><button class="btn" id="wn">What's new</button></div></div>`}
 $('#v-settings').addEventListener('click',async e=>{const t=e.target.closest('[data-th]');if(t){ls.s('theme',t.dataset.th);applyTheme(1);$$('#v-settings [data-th]').forEach(b=>{const on=b===t;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});return}
+ const a=e.target.closest('[data-ac]');if(a){ls.s('ac',a.dataset.ac);applyPrefs();$$('#v-settings [data-ac]').forEach(b=>{const on=b===a;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});return}
+ const f=e.target.closest('[data-fs]');if(f){ls.s('fs',f.dataset.fs);applyPrefs();$$('#v-settings [data-fs]').forEach(b=>{const on=b===f;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});return}
+ if(e.target.closest('#rst')){PREF_KEYS.forEach(ls.d);ls.d('notif');applyTheme(1);applyPrefs();renderSettings();toast('Settings reset to default');return}
+ if(e.target.closest('#clr')){try{const k=await caches.keys();await Promise.all(k.map(x=>caches.delete(x)));toast('Offline cache cleared')}catch(_){toast('Nothing to clear')}return}
  if(e.target.closest('#chk')){toast('Checking...');checkUpdate(true)}
  if(e.target.closest('#wn')){try{const j=await getVer();showNew(j,VERSION)}catch(_){toast('Connect to the internet to see details')}}});
 $('#v-settings').addEventListener('change',async e=>{const c=e.target.closest('[data-pref]');if(!c)return;const k=c.dataset.pref;
  if(k==='notif'){const ok=await setNotif(c.checked);if(!ok)c.checked=false}else{ls.s(k,c.checked?'1':'0');applyPrefs()}});
+/* notify when a newer review shows up after an app update */
+function checkNewReview(){const t=REV[0];if(!t||!t[4])return;const last=ls.g('lastrev');ls.s('lastrev',t[4]);if(last&&new Date(t[4])>new Date(last)){toast('New review from '+t[0]);notify('New client review',t[0]+' left '+(t[3]||5)+' stars','rev')}}
+setTimeout(checkNewReview,2500);
 /* router */
 const PAGES=['home','about','work','services','reviews','faqs','contact','settings','privacy','terms'];
 function route(){const [p0,sub]=(location.hash||'#home').slice(1).split('/'),p=PAGES.includes(p0)?p0:'home';
  if(p==='services')renderServices(sub);if(p==='settings')renderSettings();
+ if(p==='reviews'){$('#rff').style.display='';$('#rok').classList.remove('on')}
  if(p==='contact'){if(pick)$('#s').value=[...$('#s').options].map(o=>o.value).find(v=>v.startsWith(pick))||$('#s').value;$('#ff').style.display='';$('#ok').classList.remove('on')}
  $$('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+p));
  $$('#nav a').forEach(a=>a.classList.toggle('on',a.dataset.t===p));

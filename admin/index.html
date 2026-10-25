@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Admin - Saad Durrani</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font:15px/1.5 system-ui,sans-serif;background:#12191A;color:#E8F0F1;padding:14px 14px 90px}
+.w{max-width:760px;margin:0 auto}h1{font-size:22px;margin:8px 0 14px}h2{font-size:16px;margin:6px 0 10px}
+.c{background:#1F2B2D;border:1px solid #34474C;border-radius:16px;padding:14px;margin-bottom:12px}
+label{display:block;font-size:12.5px;color:#9FB2B5;margin:10px 0 4px}
+input,select,textarea{width:100%;font:inherit;padding:10px 12px;border-radius:10px;border:1.5px solid #34474C;background:#27373B;color:#E8F0F1}
+textarea{min-height:90px}button{font:inherit;cursor:pointer;border:0;border-radius:20px;padding:9px 16px;font-weight:700;background:#3D6B72;color:#fff}
+button.a{background:#D98A0B}button.r{background:#8B2F2B}button.g{background:#34474C}
+.tabs{display:flex;gap:8px;overflow-x:auto;margin-bottom:12px}.tabs button{background:#27373B;flex-shrink:0}.tabs button.on{background:#D98A0B}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.bar{position:fixed;left:0;right:0;bottom:0;background:#182224;padding:12px;display:flex;gap:10px;justify-content:center;align-items:center;border-top:1px solid #34474C}
+#msg{font-size:13px;color:#F2B544}img.p{max-width:140px;border-radius:8px;display:block;margin-top:6px}.g3{display:grid;gap:0 10px;grid-template-columns:repeat(3,1fr)}
+</style></head><body><div class="w"><h1>Admin panel</h1><div id="app"></div></div>
+<script>
+var $=function(s){return document.querySelector(s)},esc=function(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+var cfg={};try{cfg=JSON.parse(localStorage.getItem('cms')||'{}')}catch(e){}
+var data=null,sha=null,tab='work',dirty=false;
+var PAGES=['home','about','work','services','reviews','faqs','contact'];
+var T={work:{l:'Projects',f:[['n','Project name'],['d','Short description'],['u','Website link (https://...)'],['img','Screenshot (optional, auto if empty)','img']],nw:{n:'',d:'',u:'',img:''}},
+reviews:{l:'Reviews',f:[['p','Project name'],['t','Website type'],['m','Message','ta'],['r','Rating (1-5)','num'],['dt','Date and time','dt']],nw:function(){return{p:'',t:'',m:'',r:5,dt:new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,16)}}},
+sections:{l:'Page sections',f:[['page','Show on page','sel'],['title','Title'],['text','Text','ta'],['img','Image (optional)','img'],['btn','Button text (optional)'],['link','Button link (optional)']],nw:{page:'home',title:'',text:'',img:'',btn:'',link:''}}};
+var PL={dev:['Web Development','Landing','Business','Custom App'],design:['Web Design','Starter','Standard','Premium'],care:['Web Maintenance','Basic','Standard','Pro'],shop:['E-commerce','Starter','Business','Advanced']};
+function msg(t){var m=$('#msg');if(m)m.textContent=t}
+function H(){return{Authorization:'Bearer '+cfg.token,Accept:'application/vnd.github+json'}}
+function U(p){return'https://api.github.com/repos/'+cfg.repo+'/contents/'+p}
+function enc(s){return btoa(unescape(encodeURIComponent(s)))}
+function login(){$('#app').innerHTML='<div class="c"><h2>Sign in</h2><label>GitHub repository (username/repo)</label><input id="lr" value="'+esc(cfg.repo||'')+'" placeholder="saad/portfolio"><label>Branch</label><input id="lb" value="'+esc(cfg.branch||'main')+'"><label>GitHub token (only you have this)</label><input id="lt" type="password" value="'+esc(cfg.token||'')+'"><div class="row"><button class="a" id="lg">Open admin</button></div><p id="msg" style="margin-top:10px"></p></div>';
+ $('#lg').onclick=function(){cfg={repo:$('#lr').value.trim(),branch:$('#lb').value.trim()||'main',token:$('#lt').value.trim()};localStorage.setItem('cms',JSON.stringify(cfg));load()}}
+async function load(){msg('Loading...');try{var r=await fetch(U('content.json')+'?ref='+cfg.branch+'&t='+Date.now(),{headers:H()});if(!r.ok)throw new Error(r.status===401?'Token wrong':r.status===404?'Repo or content.json not found':'Error '+r.status);var j=await r.json();sha=j.sha;data=JSON.parse(decodeURIComponent(escape(atob(j.content.replace(/\n/g,'')))));['work','reviews','sections'].forEach(function(k){data[k]=data[k]||[]});data.prices=data.prices||{};dirty=false;draw()}catch(e){login();msg(e.message)}}
+function draw(){var h='<div class="tabs">'+Object.keys(T).map(function(k){return'<button data-tab="'+k+'" class="'+(tab===k?'on':'')+'">'+T[k].l+'</button>'}).join('')+'<button data-tab="prices" class="'+(tab==='prices'?'on':'')+'">Prices</button><button class="g" id="lo">Sign out</button></div>';
+ if(tab==='prices'){h+=Object.keys(PL).map(function(k){var p=data.prices[k]||['','',''];return'<div class="c"><h2>'+PL[k][0]+'</h2><div class="g3">'+[0,1,2].map(function(i){return'<div><label>'+PL[k][i+1]+'</label><input data-pr="'+k+'" data-i="'+i+'" value="'+esc(p[i])+'"></div>'}).join('')+'</div></div>'}).join('')}
+ else{var t=T[tab],L=data[tab];h+=L.map(function(it,i){return'<div class="c"><b>#'+(i+1)+'</b>'+t.f.map(function(f){var v=it[f[0]],ty=f[2],k='data-t="'+tab+'" data-i="'+i+'" data-k="'+f[0]+'"';var inp=ty==='ta'?'<textarea '+k+'>'+esc(v)+'</textarea>':ty==='num'?'<input type="number" min="1" max="5" '+k+' value="'+esc(v)+'">':ty==='dt'?'<input type="datetime-local" '+k+' value="'+esc(v)+'">':ty==='sel'?'<select '+k+'>'+PAGES.map(function(p){return'<option'+(p===v?' selected':'')+'>'+p+'</option>'}).join('')+'</select>':ty==='img'?'<input '+k+' value="'+esc(v)+'" placeholder="uploaded path"><input type="file" accept="image/*" data-up="'+i+'" data-k="'+f[0]+'" style="margin-top:6px">'+(v?'<img class="p" src="../'+esc(v)+'" alt="">':''):'<input '+k+' value="'+esc(v)+'">';return'<label>'+f[1]+'</label>'+inp}).join('')+'<div class="row"><button class="g" data-a="up" data-i="'+i+'">Move up</button><button class="g" data-a="dn" data-i="'+i+'">Move down</button><button class="r" data-a="del" data-i="'+i+'">Delete</button></div></div>'}).join('')+'<button class="a" data-a="add">+ Add new</button>'}
+ $('#app').innerHTML=h;bar()}
+function bar(){var b=$('.bar');if(!b){b=document.createElement('div');b.className='bar';b.innerHTML='<span id="msg"></span><button class="a" id="sv">Save and publish</button>';document.body.appendChild(b);$('#sv').onclick=save}}
+async function save(){msg('Saving...');try{var r=await fetch(U('content.json'),{method:'PUT',headers:H(),body:JSON.stringify({message:'CMS update',content:enc(JSON.stringify(data,null,1)),sha:sha,branch:cfg.branch})});var j=await r.json();if(!r.ok)throw new Error(j.message||r.status);sha=j.content.sha;dirty=false;msg('Saved. Live in about 1 minute.')}catch(e){msg('Failed: '+e.message)}}
+document.addEventListener('input',function(e){var d=e.target.dataset;if(d.t){var v=e.target.value;data[d.t][d.i][d.k]=d.k==='r'?+v:v;dirty=true}else if(d.pr){var a=data.prices[d.pr]||['','',''];a[d.i]=e.target.value;data.prices[d.pr]=a;dirty=true}});
+document.addEventListener('change',function(e){var d=e.target.dataset;if(d.up!==undefined&&e.target.files[0]){var f=e.target.files[0],rd=new FileReader();msg('Uploading image...');rd.onload=async function(){try{var p='uploads/'+Date.now()+'-'+f.name.replace(/[^\w.\-]/g,'_');var r=await fetch(U(p),{method:'PUT',headers:H(),body:JSON.stringify({message:'CMS image',content:rd.result.split(',')[1],branch:cfg.branch})});if(!r.ok)throw new Error((await r.json()).message);data[tab][d.up][d.k]=p;dirty=true;draw();msg('Image uploaded. Press Save.')}catch(x){msg('Upload failed: '+x.message)}};rd.readAsDataURL(f)}});
+document.addEventListener('click',function(e){var b=e.target.closest('button');if(!b||!data)return;var d=b.dataset;
+ if(d.tab){tab=d.tab;draw()}else if(b.id==='lo'){localStorage.removeItem('cms');location.reload()}
+ else if(d.a==='add'){var n=T[tab].nw;data[tab].unshift(typeof n==='function'?n():JSON.parse(JSON.stringify(n)));dirty=true;draw()}
+ else if(d.a==='del'){if(confirm('Delete this item?')){data[tab].splice(+d.i,1);dirty=true;draw()}}
+ else if(d.a==='up'||d.a==='dn'){var i=+d.i,j=d.a==='up'?i-1:i+1,L=data[tab];if(j>=0&&j<L.length){var t=L[i];L[i]=L[j];L[j]=t;dirty=true;draw()}}});
+addEventListener('beforeunload',function(e){if(dirty){e.preventDefault();e.returnValue=''}});
+cfg.token&&cfg.repo?load():login();
+</script></body></html>

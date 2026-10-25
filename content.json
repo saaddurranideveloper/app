@@ -1,19 +1,113 @@
 {
-"work":[
-{"n":"World Tech Codex CRM","d":"Free sales CRM, custom built (not WordPress)","u":"https://world-tech-codex.github.io/world-tech-codex/leads","img":"crm.png"},
-{"n":"The Crypto Airdrop","d":"Crypto content site","u":"https://thecryptoairdrop.com/","img":""},
-{"n":"Home Decor Cozy","d":"WordPress blog","u":"https://homedecorcozy.com/","img":""},
-{"n":"Home Charm Decors","d":"WordPress blog","u":"https://homecharmdecors.com/","img":""},
-{"n":"Farzana Aqib","d":"Personal brand site","u":"https://farzanaaqib.com/","img":""},
-{"n":"SkyLine Design","d":"Portfolio website","u":"https://skylinedesign555.com/","img":""},
-{"n":"Reliable Finds Store","d":"E-commerce store","u":"https://reliablefinds.store/","img":""}],
-"reviews":[
-{"p":"The Crypto Airdrop","t":"Crypto content site","m":"The site loads quickly and the airdrop listings are easy to scan. Saad understood exactly what we needed.","r":5,"dt":"2025-03-14T11:20"},
-{"p":"Home Decor Cozy","t":"WordPress blog","m":"Our posts look great on phones and the layout is simple to browse. Saad was patient with every change.","r":5,"dt":"2025-06-02T16:45"},
-{"p":"Home Charm Decors","t":"WordPress blog","m":"Saad set up a clean blog and showed us how to edit it ourselves.","r":5,"dt":"2025-09-19T09:30"},
-{"p":"Farzana Aqib","t":"Personal brand site","m":"Clear communication from start to finish, delivered on the timeline he quoted.","r":5,"dt":"2026-01-22T18:10"},
-{"p":"SkyLine Design","t":"Portfolio website","m":"The portfolio shows our work properly on every screen, and the process was smooth.","r":5,"dt":"2026-04-08T13:05"},
-{"p":"Reliable Finds Store","t":"E-commerce store","m":"The store is easy to browse and checkout works well on mobile. Issues were fixed quickly.","r":5,"dt":"2026-08-17T20:40"}],
-"prices":{"dev":["$60","$150","$400+"],"design":["$50","$120","$250"],"care":["$30","$60","$100"],"shop":["$250","$400","$700"]},
-"sections":[]
+ "work": [
+  {
+   "n": "World Tech Codex CRM",
+   "d": "Free sales CRM, custom built (not WordPress)",
+   "u": "https://world-tech-codex.github.io/world-tech-codex/leads",
+   "img": "crm.png"
+  },
+  {
+   "n": "The Crypto Airdrop",
+   "d": "Crypto content site",
+   "u": "https://thecryptoairdrop.com/",
+   "img": ""
+  },
+  {
+   "n": "Home Decor Cozy",
+   "d": "WordPress blog",
+   "u": "https://homedecorcozy.com/",
+   "img": ""
+  },
+  {
+   "n": "Home Charm Decors",
+   "d": "WordPress blog",
+   "u": "https://homecharmdecors.com/",
+   "img": ""
+  },
+  {
+   "n": "Farzana Aqib",
+   "d": "Personal brand site",
+   "u": "https://farzanaaqib.com/",
+   "img": ""
+  },
+  {
+   "n": "SkyLine Design",
+   "d": "Portfolio website",
+   "u": "https://skylinedesign555.com/",
+   "img": ""
+  },
+  {
+   "n": "Reliable Finds Store",
+   "d": "E-commerce store",
+   "u": "https://reliablefinds.store/",
+   "img": ""
+  }
+ ],
+ "reviews": [
+  {
+   "p": "The Crypto Airdrop",
+   "t": "Crypto content site",
+   "m": "The site loads quickly and the airdrop listings are easy to scan. Saad understood exactly what we needed.",
+   "r": 5,
+   "dt": "2025-03-14T11:20"
+  },
+  {
+   "p": "Home Decor Cozy",
+   "t": "WordPress blog",
+   "m": "Our posts look great on phones and the layout is simple to browse. Saad was patient with every change.",
+   "r": 5,
+   "dt": "2025-06-02T16:45"
+  },
+  {
+   "p": "Home Charm Decors",
+   "t": "WordPress blog",
+   "m": "Saad set up a clean blog and showed us how to edit it ourselves.",
+   "r": 5,
+   "dt": "2025-09-19T09:30"
+  },
+  {
+   "p": "Farzana Aqib",
+   "t": "Personal brand site",
+   "m": "Clear communication from start to finish, delivered on the timeline he quoted.",
+   "r": 5,
+   "dt": "2026-01-22T18:10"
+  },
+  {
+   "p": "SkyLine Design",
+   "t": "Portfolio website",
+   "m": "The portfolio shows our work properly on every screen, and the process was smooth.",
+   "r": 5,
+   "dt": "2026-04-08T13:05"
+  },
+  {
+   "p": "Reliable Finds Store",
+   "t": "E-commerce store",
+   "m": "The store is easy to browse and checkout works well on mobile. Issues were fixed quickly.",
+   "r": 5,
+   "dt": "2026-08-17T20:40"
+  }
+ ],
+ "prices": {
+  "dev": [
+   "$60",
+   "$150",
+   "$400+"
+  ],
+  "design": [
+   "$50",
+   "$120",
+   "$250"
+  ],
+  "care": [
+   "$30",
+   "$60",
+   "$100"
+  ],
+  "shop": [
+   "$250",
+   "$400",
+   "$750"
+  ]
+ },
+ "sections": []
 }

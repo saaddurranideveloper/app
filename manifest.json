@@ -1,37 +1,33 @@
 {
   "name": "Saad Durrani - Developer",
   "short_name": "Saad Durrani",
-  "description": "Portfolio app of Saad Durrani: WordPress specialist and developer.",
-  "start_url": "/app/",
-  "scope": "/app/",
+  "description": "Saad Durrani: developer and WordPress specialist. Web development, web design, maintenance and e-commerce.",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#000000",
-  "theme_color": "#355353",
+  "background_color": "#12191A",
+  "theme_color": "#12191A",
   "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "version": "1.1.0",
+  "version_history": [
     {
-      "src": "icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
+      "v": "1.1.0",
+      "date": "October 2026",
+      "changes": [
+        "New: leave a review with project name, website type, star rating and a quick message",
+        "Dark theme is now the default",
+        "New settings: accent color, text size, slider autoplay, tap vibration, clear cache and reset"
+      ]
     },
     {
-      "src": "icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
+      "v": "1.0.0",
+      "date": "October 2026",
+      "changes": [
+        "First release of the Saad Durrani app"
+      ]
     }
   ]
 }
